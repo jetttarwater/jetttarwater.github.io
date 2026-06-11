@@ -260,8 +260,11 @@ p{
         </div>
 
         <div class="menu-item" onclick="openArtistWindow()">
-            <div class="menu-icon"></div>
-            <span>ArtistStatement.txt</span>
+
+            <img src="artiststatement.png" class="menu-icon">
+
+            <span>ArtistStatement.png</span>
+
         </div>
 
         <div class="menu-item" onclick="openImageWindow('image1.jpg','Artwork1.bmp')">
@@ -334,14 +337,14 @@ startButton.addEventListener("click", () => {
 
 /* WINDOW CREATOR */
 
-function createWindow(title, content){
+function createWindow(title, content, top = 100, left = 100){
 
     const windowDiv = document.createElement("div");
 
     windowDiv.className = "window";
 
-    windowDiv.style.top = Math.random() * 300 + 50 + "px";
-    windowDiv.style.left = Math.random() * 700 + 50 + "px";
+    windowDiv.style.top = top + "px";
+    windowDiv.style.left = left + "px";
 
     windowDiv.innerHTML = `
 
@@ -397,7 +400,7 @@ function openCVWindow(){
             <li>Creative Technologist</li>
         </ul>
 
-    `);
+    `, 60, 60);
 
 }
 
@@ -418,7 +421,7 @@ function openSkillsWindow(){
             <li>Digital Fabrication</li>
         </ul>
 
-    `);
+    `, 120, 420);
 
 }
 
@@ -440,31 +443,22 @@ function openBioWindow(){
             and nostalgic operating-system-inspired interfaces.
         </p>
 
-    `);
+    `, 300, 220);
 
 }
 
-/* ARTIST STATEMENT */
+/* ARTIST STATEMENT IMAGE */
 
 function openArtistWindow(){
 
-    createWindow("ArtistStatement.txt", `
+    createWindow("ArtistStatement.png", `
 
-        <h2>Artist Statement</h2>
+        <img 
+            src="artiststatement.png"
+            class="image-frame"
+        >
 
-        <p>
-            My work explores the relationship between
-            nostalgia, technology, and digital identity.
-        </p>
-
-        <p>
-            Through interactive systems, sound,
-            and retro-inspired interfaces,
-            I investigate how emotion and memory
-            can be embedded into contemporary media.
-        </p>
-
-    `);
+    `, 400, 650);
 
 }
 
@@ -479,7 +473,7 @@ function openImageWindow(imageSrc, title){
             class="image-frame"
         >
 
-    `);
+    `, 150, 500);
 
 }
 
