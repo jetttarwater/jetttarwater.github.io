@@ -38,7 +38,7 @@ body{
 
 .window{
     position:absolute;
-    width:500px;
+    width:400px;
 
     background:#c0c0c0;
 
@@ -454,11 +454,16 @@ function openArtistWindow(){
     createWindow("ArtistStatement.png", `
 
         <img 
-            src="a cup.jpg"
+            src="artiststatement.png"
             class="image-frame"
         >
 
     `, 400, 650);
+
+    const windows = document.querySelectorAll(".window");
+    const newestWindow = windows[windows.length - 1];
+
+    newestWindow.style.width = "600px";
 
 }
 
