@@ -547,23 +547,6 @@ function createWindow(title, content, top=100, left=100, z=1){
 
 
 
-    const image = win.querySelector(".clickable-image");
-    const descriptionBox = win.querySelector(".image-description");
-
-    image.addEventListener("click", (e) => {
-
-        e.stopPropagation();
-
-        if(descriptionBox.style.display === "block"){
-            descriptionBox.style.display = "none";
-        }else{
-            descriptionBox.style.display = "block";
-        }
-
-    });
-
-}
-
 /* CV */
 
 function openCVWindow(){
