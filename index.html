@@ -621,8 +621,8 @@ function openAudioWindow(audioSrc, title, description){
         </audio>
 
     `,
-    Math.random() * 400 + 20,
-    Math.random() * 700 + 20,
+Math.random() * (window.innerHeight - 250) + 20,   // top
+Math.random() * (window.innerWidth - 350) + 20,    // left
     0
     );
 
@@ -649,8 +649,8 @@ function openImageWindow(imageSrc, title, description){
         </div>
 
     `,
-    Math.random() * 400 + 20,
-    Math.random() * 700 + 20,
+    Math.random() * (window.innerHeight - 250) + 20,   // top
+Math.random() * (window.innerWidth - 350) + 20,    // left
     0
     );
 
