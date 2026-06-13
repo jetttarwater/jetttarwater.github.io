@@ -422,6 +422,44 @@ const desktop = document.getElementById("desktop");
 const startButton = document.getElementById("startButton");
 const startMenu = document.getElementById("startMenu");
 
+/* WINDOW STORAGE */
+
+const windows = {};
+
+/* ARTWORK DATA */
+
+const artworks = [
+
+    {
+        id:"art1",
+        image:"images/art1.jpg",
+        title:"Infinite Dopamine Machine",
+        description:"Mixed media installation."
+    },
+
+    {
+        id:"art2",
+        image:"images/art2.jpg",
+        title:"Signal Decay",
+        description:"Analog scan textures."
+    },
+
+    {
+        id:"art3",
+        image:"images/art3.jpg",
+        title:"Field Collapse",
+        description:"Photography distortion study."
+    },
+
+    {
+        id:"art4",
+        image:"images/art4.jpg",
+        title:"Synthetic Memory",
+        description:"Digital collage experiment."
+    }
+
+];
+
 /* MENU */
 
 startButton.addEventListener("click", () => {
@@ -438,9 +476,28 @@ startButton.addEventListener("click", () => {
 
 });
 
-/* WINDOW CREATOR */
+/* FOCUS WINDOW */
 
-function createWindow(title, content, top=100, left=100, z=1){
+function focusWindow(win){
+
+    win.style.display = "block";
+    win.style.zIndex = Date.now();
+
+}
+
+/* CREATE WINDOW */
+
+function createWindow(id, title, content, top=100, left=100){
+
+    /* REOPEN EXISTING */
+
+    if(windows[id]){
+
+        focusWindow(windows[id]);
+
+        return windows[id];
+
+    }
 
     const windowDiv = document.createElement("div");
 
@@ -449,9 +506,9 @@ function createWindow(title, content, top=100, left=100, z=1){
     windowDiv.style.top = top + "px";
     windowDiv.style.left = left + "px";
 
-    windowDiv.style.zIndex = z;
+    windowDiv.style.zIndex = Date.now();
 
-    windowDiv.innerHTML = `
+    windowDiv.innerHTML = 
 
         <div class="title-bar">
 
@@ -467,21 +524,21 @@ function createWindow(title, content, top=100, left=100, z=1){
 
         </div>
 
-    `;
+    ;
 
     desktop.appendChild(windowDiv);
 
     makeDraggable(windowDiv);
 
+    windows[id] = windowDiv;
+
     const closeBtn = windowDiv.querySelector(".close-btn");
 
     closeBtn.addEventListener("click", () => {
 
-        windowDiv.remove();
+        windowDiv.style.display = "none";
 
     });
-
-    startMenu.style.display = "none";
 
     return windowDiv;
 
@@ -491,8 +548,11 @@ function createWindow(title, content, top=100, left=100, z=1){
 
 function openCVWindow(){
 
-    createWindow("CV.txt", `
+    createWindow(
+        "cv",
+        "CV.txt",
 
+        
         <h2>Curriculum Vitae</h2>
 
         <br>
@@ -500,8 +560,11 @@ function openCVWindow(){
         <p><strong>Name:</strong> Jett Tarwater</p>
 
         <p><strong>Email:</strong> you@email.com</p>
+        ,
 
-    `, 60, 60, 100);
+        60,
+        60
+    );
 
 }
 
@@ -509,8 +572,11 @@ function openCVWindow(){
 
 function openSkillsWindow(){
 
-    createWindow("Skills.exe", `
+    createWindow(
+        "skills",
+        "Skills.exe",
 
+        
         <h2>Skills</h2>
 
         <br>
@@ -521,8 +587,11 @@ function openSkillsWindow(){
             <li>Godot Engine</li>
             <li>Music Production</li>
         </ul>
+        ,
 
-    `, 100, 420, 100);
+        100,
+        420
+    );
 
 }
 
@@ -530,8 +599,11 @@ function openSkillsWindow(){
 
 function openBioWindow(){
 
-    createWindow("Bio.doc", `
+    createWindow(
+        "bio",
+        "Bio.doc",
 
+        
         <h2>Bio</h2>
 
         <br>
@@ -539,21 +611,25 @@ function openBioWindow(){
         <p>
             Creative developer focused on interactive media.
         </p>
+        ,
 
-    `, 280, 180, 100);
+        280,
+        180
+    );
 
 }
 
 /* AUDIO */
 
-function openAudioWindow(audioSrc, title, description){
+function openAudioWindow(id, audioSrc, title, description){
 
-    createWindow(title, `
+    createWindow(
+        id,
+        title,
 
+        
         <div class="audio-description">
-
             ${description}
-
         </div>
 
         <audio controls class="audio-player">
@@ -561,21 +637,23 @@ function openAudioWindow(audioSrc, title, description){
             <source src="${audioSrc}" type="audio/mpeg">
 
         </audio>
+        ,
 
-    `,
-    Math.random() * 300 + 50,
-    Math.random() * 700 + 50,
-    50
+        Math.random() * 300 + 50,
+        Math.random() * 700 + 50
     );
 
 }
 
 /* YOUTUBE */
 
-function openYoutubeWindow(videoSrc, title, description){
+function openYoutubeWindow(id, videoSrc, title, description){
 
-    createWindow(title, `
+    createWindow(
+        id,
+        title,
 
+        
         <p style="margin-bottom:12px;">
             ${description}
         </p>
@@ -585,42 +663,47 @@ function openYoutubeWindow(videoSrc, title, description){
             src="${videoSrc}"
             allowfullscreen
         ></iframe>
+        ,
 
-    `,
-    Math.random() * 250 + 80,
-    Math.random() * 650 + 50,
-    40
+        Math.random() * 250 + 80,
+        Math.random() * 650 + 50
     );
 
 }
 
-/* IMAGE WINDOWS */
+/* IMAGE WINDOW */
 
-function openImageWindow(imageSrc, title, description){
+function openImageWindow(id, imageSrc, title, description){
 
-    const win = createWindow(title, `
+    const win = createWindow(
+        id,
+        title,
 
+        
         <div class="image-container">
 
             <div class="image-description">
                 ${description}
             </div>
 
-            <img 
+            <img
                 src="${imageSrc}"
                 class="image-frame clickable-image"
             >
 
         </div>
+        ,
 
-    `,
-    Math.random() * 400 + 20,
-    Math.random() * 700 + 20,
-    0
+        Math.random() * 400 + 20,
+        Math.random() * 700 + 20
     );
 
     const image = win.querySelector(".clickable-image");
     const descriptionBox = win.querySelector(".image-description");
+
+    if(image.dataset.listenerAdded) return;
+
+    image.dataset.listenerAdded = true;
 
     image.addEventListener("click", (e) => {
 
@@ -712,63 +795,97 @@ updateClock();
 
 setInterval(updateClock, 1000);
 
-/* DEFAULT WINDOWS */
+/* BUILD MENU */
+
+function buildMenu(){
+
+    let html =
+
+        <div class="menu-item" onclick="openCVWindow()">
+            <span>CV.txt</span>
+        </div>
+
+        <div class="menu-item" onclick="openSkillsWindow()">
+            <span>Skills.exe</span>
+        </div>
+
+        <div class="menu-item" onclick="openBioWindow()">
+            <span>Bio.doc</span>
+        </div>
+
+        <div class="menu-item"
+            onclick="openAudioWindow(
+                'track1',
+                'track1.mp3',
+                'Track 1.wav',
+                'Experimental ambient composition.'
+            )">
+            <span>Track 1.wav</span>
+        </div>
+
+        <div class="menu-item"
+            onclick="openAudioWindow(
+                'track2',
+                'track2.mp3',
+                'Track 2.wav',
+                'Field recordings and processed textures.'
+            )">
+            <span>Track 2.wav</span>
+        </div>
+
+        <div class="menu-item"
+            onclick="openAudioWindow(
+                'track3',
+                'track3.mp3',
+                'Track 3.wav',
+                'Noise composition with granular synthesis.'
+            )">
+            <span>Track 3.wav</span>
+        </div>
+
+        <div class="menu-item"
+            onclick="openYoutubeWindow(
+                'video1',
+                'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                'Video 1',
+                'Video documentation.'
+            )">
+            <span>Video 1.url</span>
+        </div>
+
+    ;
+
+    artworks.forEach((artwork) => {
+
+        html += 
+
+            <div class="menu-item"
+                onclick="openImageWindow(
+                    '${artwork.id}',
+                    '${artwork.image}',
+                    '${artwork.title}',
+                    '${artwork.description}'
+                )">
+
+                <span>${artwork.title}</span>
+
+            </div>
+
+        ;
+
+    });
+
+    startMenu.innerHTML = html;
+
+}
+
+buildMenu();
+
+/* STARTUP WINDOWS */
 
 openCVWindow();
 openSkillsWindow();
 openBioWindow();
-
-/* AUTO OPEN ARTWORKS */
-
-artworks.forEach((artwork) => {
-
-    openImageWindow(
-        artwork.image,
-        artwork.title,
-        artwork.description
-    );
-
-});
-
-/* AUDIO WINDOWS */
-
-openAudioWindow(
-    "track1.mp3",
-    "Track 1.wav",
-    "Experimental ambient composition."
-);
-
-openAudioWindow(
-    "track2.mp3",
-    "Track 2.wav",
-    "Field recordings and processed textures."
-);
-
-openAudioWindow(
-    "track3.mp3",
-    "Track 3.wav",
-    "Noise composition with granular synthesis."
-);
-
-/* YOUTUBE WINDOWS */
-
-openYoutubeWindow(
-    "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    "Video 1",
-    "Video documentation."
-);
-
-openYoutubeWindow(
-    "https://www.youtube.com/embed/ScMzIvxBSi4",
-    "Video 2",
-    "Performance recording."
-);
-
-openYoutubeWindow(
-    "https://www.youtube.com/embed/ysz5S6PUM-U",
-    "Video 3",
-    "Installation walkthrough."
-);
 
 </script>
 
