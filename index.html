@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Tahoma,sans-serif;
+    font-family:Tahoma, sans-serif;
 }
 
 body{
@@ -39,68 +38,157 @@ body{
 
 .window{
     position:absolute;
-
-    width:420px;
+    width:320px;
 
     background:#c0c0c0;
 
-    border-top:2px solid white;
-    border-left:2px solid white;
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
 
-    box-shadow:4px 4px rgba(0,0,0,0.3);
+    box-shadow:4px 4px 0 rgba(0,0,0,0.3);
+
+    z-index:1;
 }
 
-.titlebar{
+.title-bar{
     background:linear-gradient(to right, navy, #1084d0);
 
     color:white;
 
     padding:5px 8px;
 
+    font-weight:bold;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
 
     cursor:move;
-
-    font-weight:bold;
+    user-select:none;
 }
 
-.close{
+.close-btn{
     width:18px;
     height:18px;
 
     background:#c0c0c0;
 
-    color:black;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:12px;
-
-    border-top:2px solid white;
-    border-left:2px solid white;
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     cursor:pointer;
+
+    color:black;
+    font-size:12px;
 }
 
-.content{
+.window-content{
     padding:14px;
+}
 
-    max-height:500px;
-    overflow:auto;
+.image-frame{
+    width:100%;
+    display:block;
 
+    border-top:2px solid #444;
+    border-left:2px solid #444;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+}
+
+/* AUDIO */
+
+.audio-player{
+    width:100%;
+    margin-top:10px;
+}
+
+.audio-description{
+    margin-bottom:10px;
     line-height:1.5;
 }
 
-.content ul{
-    padding-left:20px;
+/* YOUTUBE */
+
+.youtube-frame{
+    width:100%;
+    height:220px;
+
+    border:none;
+
+    border-top:2px solid #444;
+    border-left:2px solid #444;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+}
+
+.youtube-link{
+    display:inline-block;
+
+    margin-top:12px;
+    padding:6px 10px;
+
+    background:#c0c0c0;
+    color:black;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
+    border-right:2px solid #444;
+    border-bottom:2px solid #444;
+}
+
+/* IMAGE DESCRIPTION */
+
+.image-container{
+    position:relative;
+}
+
+.image-description{
+    position:absolute;
+
+    top:10px;
+    left:10px;
+    right:10px;
+
+    background:rgba(0,0,0,0.85);
+    color:white;
+
+    padding:10px;
+
+    display:none;
+
+    z-index:10;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn{
+    display:inline-block;
+
+    margin-top:12px;
+    padding:6px 10px;
+
+    background:#c0c0c0;
+    color:black;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
+    border-right:2px solid #444;
+    border-bottom:2px solid #444;
 }
 
 /* TASKBAR */
@@ -110,34 +198,38 @@ body{
     bottom:0;
 
     width:100%;
-    height:40px;
+    height:42px;
 
     background:#c0c0c0;
 
-    border-top:2px solid white;
+    border-top:2px solid #fff;
 
     display:flex;
     align-items:center;
 
     padding:4px;
+
+    z-index:999;
 }
 
-.menu-button{
-    padding:6px 12px;
-
+.start-btn{
     background:#c0c0c0;
 
-    border-top:2px solid white;
-    border-left:2px solid white;
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
+
+    padding:6px 12px;
 
     font-weight:bold;
 
     cursor:pointer;
 }
 
-.name{
+/* NAME */
+
+.taskbar-name{
     position:absolute;
 
     left:50%;
@@ -146,17 +238,22 @@ body{
     font-weight:bold;
 }
 
+/* CLOCK */
+
 .clock{
     margin-left:auto;
 
-    padding:5px 10px;
-
     background:#bdbdbd;
+
+    padding:5px 10px;
 
     border-top:2px solid #444;
     border-left:2px solid #444;
-    border-right:2px solid white;
-    border-bottom:2px solid white;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+
+    min-width:90px;
+    text-align:center;
 }
 
 /* START MENU */
@@ -164,21 +261,24 @@ body{
 .start-menu{
     position:absolute;
 
-    bottom:44px;
+    bottom:45px;
     left:4px;
 
-    width:260px;
+    width:250px;
 
     background:#c0c0c0;
 
-    border-top:2px solid white;
-    border-left:2px solid white;
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
 
     display:none;
 
-    z-index:9999;
+    max-height:500px;
+    overflow:auto;
+
+    z-index:99999;
 }
 
 .menu-item{
@@ -186,12 +286,27 @@ body{
 
     border-bottom:1px solid #888;
 
+    display:flex;
+    align-items:center;
+    gap:10px;
+
     cursor:pointer;
 }
 
 .menu-item:hover{
     background:navy;
     color:white;
+}
+
+.menu-icon{
+    width:24px;
+    height:24px;
+
+    object-fit:cover;
+
+    border:1px solid black;
+
+    background:white;
 }
 
 </style>
@@ -205,232 +320,95 @@ body{
 
     <div class="start-menu" id="startMenu">
 
-        <div class="menu-item" onclick="showWindow('cvWindow')">
-            CV.txt
-        </div>
-
-        <div class="menu-item" onclick="showWindow('skillsWindow')">
-            Skills.exe
-        </div>
-
-        <div class="menu-item" onclick="showWindow('bioWindow')">
-            Bio.doc
-        </div>
-
-    </div>
-
-    <!-- CV -->
-
-    <div class="window" id="cvWindow" style="top:60px; left:60px;">
-
-        <div class="titlebar" id="cvBar">
-
+        <div class="menu-item" onclick="openCVWindow()">
+            <div class="menu-icon"></div>
             <span>CV.txt</span>
-
-            <div class="close" onclick="closeWindow('cvWindow')">
-                ✕
-            </div>
-
         </div>
 
-        <div class="content">
-
-            <h2>Curriculum Vitae</h2>
-
-            <br>
-
-            <p><strong>Name:</strong> Jett Tarwater</p>
-
-            <p><strong>Email:</strong> you@email.com</p>
-
-            <br>
-
-            <p>
-                Creative technologist, artist, musician,
-                and developer focused on interactive media,
-                sound, and digital aesthetics.
-            </p>
-
-        </div>
-
-    </div>
-
-    <!-- SKILLS -->
-
-    <div class="window" id="skillsWindow" style="top:100px; left:500px;">
-
-        <div class="titlebar" id="skillsBar">
-
+        <div class="menu-item" onclick="openSkillsWindow()">
+            <div class="menu-icon"></div>
             <span>Skills.exe</span>
-
-            <div class="close" onclick="closeWindow('skillsWindow')">
-                ✕
-            </div>
-
         </div>
 
-        <div class="content">
-
-            <h2>Skills</h2>
-
-            <br>
-
-            <h3>Visual Programs</h3>
-
-            <br>
-
-            <ul>
-                <li>Photoshop</li>
-                <li>Illustrator</li>
-                <li>Animate</li>
-                <li>After Effects</li>
-                <li>Premiere</li>
-                <li>Substance Painter</li>
-                <li>Blender</li>
-                <li>Maya</li>
-                <li>Unity</li>
-            </ul>
-
-            <br>
-
-            <h3>Audio Programs</h3>
-
-            <br>
-
-            <ul>
-                <li>Logic Pro X</li>
-                <li>Ableton Live Suite</li>
-                <li>Serum 1 and 2 (Plugin)</li>
-            </ul>
-
-            <br>
-
-            <h3>Work Experience</h3>
-
-            <br>
-
-            <ul>
-                <li>Information Technology Internship at Modo Networks</li>
-                <li>Retail at CRAZY CAT CYCLERY</li>
-            </ul>
-
-            <br>
-
-            <h3>Experience</h3>
-
-            <br>
-
-            <ul>
-                <li>Camp Counselor at Hummingbird Music Camp</li>
-                <li>Staffer at Hummingbird Music Camp</li>
-                <li>Album Cover Artist</li>
-                <li>Asset Designer for Video Game</li>
-                <li>3D Models</li>
-                <li>UI Design</li>
-                <li>Animation</li>
-                <li>Music</li>
-            </ul>
-
-            <br>
-
-            <h3>Music</h3>
-
-            <br>
-
-            <ul>
-                <li>Musician in The El Paso Youth Jazz Ensemble</li>
-                <li>Musician in the El Paso Youth Symphony Orchestra</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-    <!-- BIO -->
-
-    <div class="window" id="bioWindow" style="top:180px; left:220px;">
-
-        <div class="titlebar" id="bioBar">
-
+        <div class="menu-item" onclick="openBioWindow()">
+            <div class="menu-icon"></div>
             <span>Bio.doc</span>
-
-            <div class="close" onclick="closeWindow('bioWindow')">
-                ✕
-            </div>
-
         </div>
 
-        <div class="content">
-
-            <h2>Bio</h2>
-
-            <br>
-
-            <p>
-                When I was no more than 2-3 months old, my two-year-old sister,
-                Merry Elliot, M.E., drowned in my grandmother's home pool.
-                My parents were simply in another room for no longer than ten minutes.
-                Her and I were in the playroom. Our older sister was not home.
-                M.E. opened the back door and jumped into the pool without floaties
-                for the first time.
-            </p>
-
-            <br>
-
-            <p>
-                I was a particularly happy baby. I'm told that I almost never cried.
-                I’m told without the brightness that I created with my thoughtless,
-                infant smiles and laughter; the rest of my family would have drowned
-                in the heavy, dark, shadow of grief that seeped and festered into my
-                family's life, home, and hearts.
-            </p>
-
-            <br>
-
-            <p>
-                Ever since I was 4, the age my second, older sister was when M.E.
-                died, I’ve lived with these stories of intense emotion and powerful
-                truths that I was a part of but can only imagine.
-            </p>
-
-            <br>
-
-            <p>
-                Yet I grieve and cry. I’m crying right now, over a girl who held
-                and loved me, but that I cannot remember.
-            </p>
-
-            <br>
-
-            <p>
-                If my parents never told me her stories, I wouldn't feel such emotion.
-                But if I can never know her love, then the sadness of her loss
-                will have to do.
-            </p>
-
-            <br>
-
-            <p>
-                And if stories are so powerful that they can hold, preserve,
-                and pass on something as special as the love I feel from her now,
-                there must be no limit to what they can do.
-            </p>
-
-            <br>
-
-            <p>
-                I try to give people a chance to love, or mourn, or admire,
-                or hate, or just to feel something from the worlds I create.
-            </p>
-
-            <br>
-
-            <p>
-                And there is no good or bad feeling.
-                Because feeling something is always better than feeling nothing.
-            </p>
-
+        <div class="menu-item" onclick="openArtistWindow()">
+            <img src="artiststatement.png" class="menu-icon">
+            <span>ArtistStatement.png</span>
         </div>
+
+        <!-- AUDIO -->
+
+        <div class="menu-item" onclick="openAudioWindow('track1.mp3','Track 1.wav','Experimental ambient composition.')">
+            <div class="menu-icon"></div>
+            <span>Track 1.wav</span>
+        </div>
+
+        <div class="menu-item" onclick="openAudioWindow('track2.mp3','Track 2.wav','Field recordings and processed textures.')">
+            <div class="menu-icon"></div>
+            <span>Track 2.wav</span>
+        </div>
+
+        <div class="menu-item" onclick="openAudioWindow('track3.mp3','Track 3.wav','Noise composition with granular synthesis.')">
+            <div class="menu-icon"></div>
+            <span>Track 3.wav</span>
+        </div>
+
+        <!-- YOUTUBE -->
+
+        <div class="menu-item" onclick="openYoutubeWindow(
+            'https://www.youtube.com/embed/dQw4w9WgXcQ',
+            'Video 1',
+            'Video documentation.'
+        )">
+            <div class="menu-icon"></div>
+            <span>Video 1.url</span>
+        </div>
+
+        <div class="menu-item" onclick="openYoutubeWindow(
+            'https://www.youtube.com/embed/ScMzIvxBSi4',
+            'Video 2',
+            'Performance recording.'
+        )">
+            <div class="menu-icon"></div>
+            <span>Video 2.url</span>
+        </div>
+
+        <div class="menu-item" onclick="openYoutubeWindow(
+            'https://www.youtube.com/embed/ysz5S6PUM-U',
+            'Video 3',
+            'Installation walkthrough.'
+        )">
+            <div class="menu-icon"></div>
+            <span>Video 3.url</span>
+        </div>
+
+        <!-- IMAGE ITEMS -->
+
+        <script>
+
+        for(let i = 1; i <= 20; i++){
+
+            document.write(`
+                <div class="menu-item" onclick="openImageWindow(
+                    'image${i}.jpg',
+                    'Artwork ${i}',
+                    'Description for artwork ${i}.'
+                )">
+
+                    <img src="image${i}.jpg" class="menu-icon">
+
+                    <span>Artwork ${i}</span>
+
+                </div>
+            `);
+
+        }
+
+        </script>
 
     </div>
 
@@ -438,11 +416,11 @@ body{
 
     <div class="taskbar">
 
-        <button class="menu-button" id="menuButton">
+        <button class="start-btn" id="startButton">
             Menu
         </button>
 
-        <div class="name">
+        <div class="taskbar-name">
             Jett Tarwater
         </div>
 
@@ -455,6 +433,282 @@ body{
 </div>
 
 <script>
+
+const desktop = document.getElementById("desktop");
+const startButton = document.getElementById("startButton");
+const startMenu = document.getElementById("startMenu");
+
+/* MENU */
+
+startButton.addEventListener("click", () => {
+
+    if(startMenu.style.display === "block"){
+
+        startMenu.style.display = "none";
+
+    }else{
+
+        startMenu.style.display = "block";
+
+    }
+
+});
+
+/* WINDOW CREATOR */
+
+function createWindow(title, content, top=100, left=100, z=1){
+
+    const windowDiv = document.createElement("div");
+
+    windowDiv.className = "window";
+
+    windowDiv.style.top = top + "px";
+    windowDiv.style.left = left + "px";
+
+    windowDiv.style.zIndex = z;
+
+    windowDiv.innerHTML = `
+
+        <div class="title-bar">
+
+            <span>${title}</span>
+
+            <div class="close-btn">✕</div>
+
+        </div>
+
+        <div class="window-content">
+
+            ${content}
+
+        </div>
+
+    `;
+
+    desktop.appendChild(windowDiv);
+
+    makeDraggable(windowDiv);
+
+    const closeBtn = windowDiv.querySelector(".close-btn");
+
+    closeBtn.addEventListener("click", () => {
+
+        windowDiv.remove();
+
+    });
+
+    startMenu.style.display = "none";
+
+    return windowDiv;
+
+}
+
+/* CV */
+
+function openCVWindow(){
+
+    createWindow("CV.txt", `
+
+        <h2>Curriculum Vitae</h2>
+
+        <br>
+
+        <p><strong>Name:</strong> Jett Tarwater</p>
+
+        <p><strong>Email:</strong> you@email.com</p>
+
+    `, 60, 60, 100);
+
+}
+
+/* SKILLS */
+
+function openSkillsWindow(){
+
+    createWindow("Skills.exe", `
+
+        <h2>Skills</h2>
+
+        <br>
+
+        <ul>
+            <li>HTML / CSS</li>
+            <li>JavaScript</li>
+            <li>Godot Engine</li>
+            <li>Music Production</li>
+        </ul>
+
+    `, 100, 420, 100);
+
+}
+
+/* BIO */
+
+function openBioWindow(){
+
+    createWindow("Bio.doc", `
+
+        <h2>Bio</h2>
+
+        <br>
+
+        <p>
+            Creative developer focused on interactive media.
+        </p>
+
+    `, 280, 180, 100);
+
+}
+
+/* ARTIST STATEMENT */
+
+function openArtistWindow(){
+
+    createWindow("ArtistStatement.png", `
+
+        <img 
+            src="artiststatement.png"
+            class="image-frame"
+        >
+
+    `, 340, 620, 100);
+
+}
+
+/* AUDIO */
+
+function openAudioWindow(audioSrc, title, description){
+
+    createWindow(title, `
+
+        <div class="audio-description">
+
+            ${description}
+
+        </div>
+
+        <audio controls class="audio-player">
+
+            <source src="${audioSrc}" type="audio/mpeg">
+
+        </audio>
+
+    `,
+    Math.random() * 300 + 50,
+    Math.random() * 700 + 50,
+    50
+    );
+
+}
+
+/* YOUTUBE */
+
+function openYoutubeWindow(videoSrc, title, description){
+
+    createWindow(title, `
+
+        <p style="margin-bottom:12px;">
+            ${description}
+        </p>
+
+        <iframe
+            class="youtube-frame"
+            src="${videoSrc}"
+            allowfullscreen
+        ></iframe>
+
+    `,
+    Math.random() * 250 + 80,
+    Math.random() * 650 + 50,
+    40
+    );
+
+}
+
+/* IMAGE WINDOWS */
+
+function openImageWindow(imageSrc, title, description){
+
+    const win = createWindow(title, `
+
+        <div class="image-container">
+
+            <div class="image-description">
+                ${description}
+            </div>
+
+            <img 
+                src="${imageSrc}"
+                class="image-frame clickable-image"
+            >
+
+        </div>
+
+    `,
+    Math.random() * 400 + 20,
+    Math.random() * 700 + 20,
+    0
+    );
+
+    const image = win.querySelector(".clickable-image");
+    const descriptionBox = win.querySelector(".image-description");
+
+    image.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        descriptionBox.style.display = "block";
+
+    });
+
+    document.addEventListener("click", () => {
+
+        descriptionBox.style.display = "none";
+
+    });
+
+}
+
+/* DRAGGING */
+
+function makeDraggable(win){
+
+    const titleBar = win.querySelector(".title-bar");
+
+    let offsetX = 0;
+    let offsetY = 0;
+
+    let isDragging = false;
+
+    titleBar.addEventListener("mousedown", (e) => {
+
+        if(e.target.classList.contains("close-btn")) return;
+
+        isDragging = true;
+
+        offsetX = e.clientX - win.offsetLeft;
+        offsetY = e.clientY - win.offsetTop;
+
+        win.style.zIndex = Date.now();
+
+    });
+
+    document.addEventListener("mousemove", (e) => {
+
+        if(!isDragging) return;
+
+        win.style.left = `${e.clientX - offsetX}px`;
+        win.style.top = `${e.clientY - offsetY}px`;
+
+    });
+
+    document.addEventListener("mouseup", () => {
+
+        isDragging = false;
+
+    });
+
+}
 
 /* CLOCK */
 
@@ -479,7 +733,7 @@ function updateClock(){
         minutes = "0" + minutes;
     }
 
-    clock.innerHTML = hours + ":" + minutes + " " + ampm;
+    clock.textContent = `${hours}:${minutes} ${ampm}`;
 
 }
 
@@ -487,109 +741,66 @@ updateClock();
 
 setInterval(updateClock, 1000);
 
-/* START MENU */
+/* DEFAULT WINDOWS */
 
-const menuButton = document.getElementById("menuButton");
-const startMenu = document.getElementById("startMenu");
+openCVWindow();
+openSkillsWindow();
+openBioWindow();
+openArtistWindow();
 
-menuButton.onclick = function(){
+/* AUTO OPEN IMAGES */
 
-    if(startMenu.style.display === "block"){
+for(let i = 1; i <= 20; i++){
 
-        startMenu.style.display = "none";
-
-    }else{
-
-        startMenu.style.display = "block";
-
-    }
-
-}
-
-/* CLOSE WINDOW */
-
-function closeWindow(id){
-
-    document.getElementById(id).style.display = "none";
+    openImageWindow(
+        `image${i}.jpg`,
+        `Artwork ${i}`,
+        `Description for artwork ${i}.`
+    );
 
 }
 
-/* SHOW WINDOW */
+/* AUDIO WINDOWS */
 
-function showWindow(id){
-
-    document.getElementById(id).style.display = "block";
-
-    startMenu.style.display = "none";
-
-}
-
-/* DRAGGING */
-
-dragElement(
-    document.getElementById("cvWindow"),
-    document.getElementById("cvBar")
+openAudioWindow(
+    "track1.mp3",
+    "Track 1.wav",
+    "Experimental ambient composition."
 );
 
-dragElement(
-    document.getElementById("skillsWindow"),
-    document.getElementById("skillsBar")
+openAudioWindow(
+    "track2.mp3",
+    "Track 2.wav",
+    "Field recordings and processed textures."
 );
 
-dragElement(
-    document.getElementById("bioWindow"),
-    document.getElementById("bioBar")
+openAudioWindow(
+    "track3.mp3",
+    "Track 3.wav",
+    "Noise composition with granular synthesis."
 );
 
-function dragElement(element, handle){
+/* YOUTUBE WINDOWS */
 
-    let pos1 = 0;
-    let pos2 = 0;
-    let pos3 = 0;
-    let pos4 = 0;
+openYoutubeWindow(
+    "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "Video 1",
+    "Video documentation."
+);
 
-    handle.onmousedown = dragMouseDown;
+openYoutubeWindow(
+    "https://www.youtube.com/embed/ScMzIvxBSi4",
+    "Video 2",
+    "Performance recording."
+);
 
-    function dragMouseDown(e){
-
-        e = e || window.event;
-
-        e.preventDefault();
-
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e){
-
-        e = e || window.event;
-
-        e.preventDefault();
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-
-        element.style.top = (element.offsetTop - pos2) + "px";
-        element.style.left = (element.offsetLeft - pos1) + "px";
-    }
-
-    function closeDragElement(){
-
-        document.onmouseup = null;
-        document.onmousemove = null;
-
-    }
-
-}
+openYoutubeWindow(
+    "https://www.youtube.com/embed/ysz5S6PUM-U",
+    "Video 3",
+    "Installation walkthrough."
+);
 
 </script>
 
 </body>
 </html>
-```
