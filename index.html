@@ -545,26 +545,7 @@ function createWindow(title, content, top=100, left=100, z=1){
 
 }
 
-/* PINNED IMAGE */
 
-function openPinnedImageWindow(){
-
-    const win = createWindow("Artist Statement.doc", `
-
-        <div class="image-container">
-
-            <div class="image-description">
-                artistStatement
-            </div>
-
-            <img 
-                src="a cup.jpg"
-                class="image-frame clickable-image"
-            >
-
-        </div>
-
-    `, 60, 750, 200);  // top, left, z-index — adjust as you like
 
     const image = win.querySelector(".clickable-image");
     const descriptionBox = win.querySelector(".image-description");
@@ -639,6 +620,26 @@ function openBioWindow(){
     `, 60, 660, 100);
 
 }
+/* PINNED IMAGE */
+
+function openPinnedImageWindow(){
+
+    const win = createWindow("Artist Statement.doc", `
+
+        <div class="image-container">
+
+            <div class="image-description">
+                artistStatement
+            </div>
+
+            <img 
+                src="a cup.jpg"
+                class="image-frame clickable-image"
+            >
+
+        </div>
+
+    `, 60, 960, 100);  // top, left, z-index — adjust as you like
 /* AUDIO WINDOWS */
 
 function openAudioWindow(audioSrc, title, description){
