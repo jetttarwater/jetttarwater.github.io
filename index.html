@@ -429,6 +429,39 @@ body{
 const desktop = document.getElementById("desktop");
 const startButton = document.getElementById("startButton");
 const startMenu = document.getElementById("startMenu");
+const audioTracks = [
+    {
+        file:"track1.mp3",
+        title:"Track One",
+        description:"A short ambient piece."
+    },
+    {
+        file:"track2.mp3",
+        title:"Track Two",
+        description:"Drum loop experiment."
+    }
+];
+
+audioTracks.forEach((track) => {
+
+    document.write(`
+
+        <div class="menu-item"
+            onclick="openAudioWindow(
+                '${track.file}',
+                '${track.title}',
+                '${track.description}'
+            )">
+
+            <div class="menu-icon"></div>
+
+            <span>${track.title}</span>
+
+        </div>
+
+    `);
+
+});
 
 /* MENU */
 
@@ -551,6 +584,29 @@ function openBioWindow(){
     `, 280, 180, 100);
 
 }
+/* AUDIO WINDOWS */
+
+function openAudioWindow(audioSrc, title, description){
+
+    createWindow(title, `
+
+        <div class="audio-description">
+            ${description}
+        </div>
+
+        <audio class="audio-player" controls>
+            <source src="${audioSrc}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+    `,
+    Math.random() * 400 + 20,
+    Math.random() * 700 + 20,
+    0
+    );
+
+}
+
 
 /* IMAGE WINDOWS */
 
