@@ -130,24 +130,6 @@ body{
     border-bottom:2px solid #fff;
 }
 
-.youtube-link{
-    display:inline-block;
-
-    margin-top:12px;
-    padding:6px 10px;
-
-    background:#c0c0c0;
-    color:black;
-
-    text-decoration:none;
-    font-weight:bold;
-
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
-    border-right:2px solid #444;
-    border-bottom:2px solid #444;
-}
-
 /* IMAGE DESCRIPTION */
 
 .image-container{
@@ -169,26 +151,6 @@ body{
     display:none;
 
     z-index:10;
-}
-
-/* DOWNLOAD BUTTON */
-
-.download-btn{
-    display:inline-block;
-
-    margin-top:12px;
-    padding:6px 10px;
-
-    background:#c0c0c0;
-    color:black;
-
-    text-decoration:none;
-    font-weight:bold;
-
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
-    border-right:2px solid #444;
-    border-bottom:2px solid #444;
 }
 
 /* TASKBAR */
@@ -227,8 +189,6 @@ body{
     cursor:pointer;
 }
 
-/* NAME */
-
 .taskbar-name{
     position:absolute;
 
@@ -237,8 +197,6 @@ body{
 
     font-weight:bold;
 }
-
-/* CLOCK */
 
 .clock{
     margin-left:auto;
@@ -335,11 +293,6 @@ body{
             <span>Bio.doc</span>
         </div>
 
-        <div class="menu-item" onclick="openArtistWindow()">
-            <img src="artiststatement.png" class="menu-icon">
-            <span>ArtistStatement.png</span>
-        </div>
-
         <!-- AUDIO -->
 
         <div class="menu-item" onclick="openAudioWindow('track1.mp3','Track 1.wav','Experimental ambient composition.')">
@@ -386,27 +339,58 @@ body{
             <span>Video 3.url</span>
         </div>
 
-        <!-- IMAGE ITEMS -->
+        <!-- ARTWORKS -->
 
         <script>
 
-        for(let i = 1; i <= 20; i++){
+        const artworks = [
+
+            {
+                image:"images/art1.jpg",
+                title:"Infinite Dopamine Machine",
+                description:"Mixed media installation."
+            },
+
+            {
+                image:"images/art2.jpg",
+                title:"Signal Decay",
+                description:"Analog scan textures."
+            },
+
+            {
+                image:"images/art3.jpg",
+                title:"Field Collapse",
+                description:"Photography distortion study."
+            },
+
+            {
+                image:"images/art4.jpg",
+                title:"Synthetic Memory",
+                description:"Digital collage experiment."
+            }
+
+        ];
+
+        artworks.forEach((artwork) => {
 
             document.write(`
-                <div class="menu-item" onclick="openImageWindow(
-                    'image${i}.jpg',
-                    'Artwork ${i}',
-                    'Description for artwork ${i}.'
-                )">
 
-                    <img src="image${i}.jpg" class="menu-icon">
+                <div class="menu-item"
+                    onclick="openImageWindow(
+                        '${artwork.image}',
+                        '${artwork.title}',
+                        '${artwork.description}'
+                    )">
 
-                    <span>Artwork ${i}</span>
+                    <img src="${artwork.image}" class="menu-icon">
+
+                    <span>${artwork.title}</span>
 
                 </div>
+
             `);
 
-        }
+        });
 
         </script>
 
@@ -560,21 +544,6 @@ function openBioWindow(){
 
 }
 
-/* ARTIST STATEMENT */
-
-function openArtistWindow(){
-
-    createWindow("ArtistStatement.png", `
-
-        <img 
-            src="artiststatement.png"
-            class="image-frame"
-        >
-
-    `, 340, 620, 100);
-
-}
-
 /* AUDIO */
 
 function openAudioWindow(audioSrc, title, description){
@@ -657,13 +626,15 @@ function openImageWindow(imageSrc, title, description){
 
         e.stopPropagation();
 
-        descriptionBox.style.display = "block";
+        if(descriptionBox.style.display === "block"){
 
-    });
+            descriptionBox.style.display = "none";
 
-    document.addEventListener("click", () => {
+        }else{
 
-        descriptionBox.style.display = "none";
+            descriptionBox.style.display = "block";
+
+        }
 
     });
 
@@ -746,19 +717,18 @@ setInterval(updateClock, 1000);
 openCVWindow();
 openSkillsWindow();
 openBioWindow();
-openArtistWindow();
 
-/* AUTO OPEN IMAGES */
+/* AUTO OPEN ARTWORKS */
 
-for(let i = 1; i <= 20; i++){
+artworks.forEach((artwork) => {
 
     openImageWindow(
-        `image${i}.jpg`,
-        `Artwork ${i}`,
-        `Description for artwork ${i}.`
+        artwork.image,
+        artwork.title,
+        artwork.description
     );
 
-}
+});
 
 /* AUDIO WINDOWS */
 
