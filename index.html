@@ -431,8 +431,8 @@ const startButton = document.getElementById("startButton");
 const startMenu = document.getElementById("startMenu");
 const audioTracks = [
     {
-        file:"track1.mp3",
-        title:"Track One",
+        file:"JUNK.mp3",
+        title:"JUNK.mp3",
         description:"A short ambient piece."
     },
     {
@@ -740,6 +740,16 @@ artworks.forEach((artwork) => {
         artwork.image,
         artwork.title,
         artwork.description
+    );
+
+});
+
+audioTracks.forEach((track) => {
+
+    openAudioWindow(
+        track.file,
+        track.title,
+        track.description
     );
 
 });
