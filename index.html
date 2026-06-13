@@ -1,17 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Windows 98 Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jett Tarwater Portfolio</title>
 
 <style>
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:Tahoma, sans-serif;
+    box-sizing:border-box;
+    font-family:Tahoma,sans-serif;
 }
 
 body{
@@ -38,112 +39,68 @@ body{
 
 .window{
     position:absolute;
-    width:320px;
+
+    width:420px;
 
     background:#c0c0c0;
 
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
+    border-top:2px solid white;
+    border-left:2px solid white;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
 
-    box-shadow:4px 4px 0 rgba(0,0,0,0.3);
-
-    z-index:1;
+    box-shadow:4px 4px rgba(0,0,0,0.3);
 }
 
-.title-bar{
+.titlebar{
     background:linear-gradient(to right, navy, #1084d0);
 
     color:white;
 
     padding:5px 8px;
 
-    font-weight:bold;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
 
     cursor:move;
-    user-select:none;
+
+    font-weight:bold;
 }
 
-.close-btn{
+.close{
     width:18px;
     height:18px;
 
     background:#c0c0c0;
 
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
-    border-right:2px solid #444;
-    border-bottom:2px solid #444;
-
     color:black;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     font-size:12px;
+
+    border-top:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid #444;
+    border-bottom:2px solid #444;
+
     cursor:pointer;
 }
 
-.window-content{
+.content{
     padding:14px;
-    color:black;
+
+    max-height:500px;
+    overflow:auto;
+
     line-height:1.5;
 }
 
-h2{
-    margin-bottom:10px;
-    font-size:18px;
-}
-
-ul{
-    margin-left:20px;
-}
-
-p{
-    margin-bottom:10px;
-}
-
-.image-frame{
-    width:100%;
-    display:block;
-
-    border-top:2px solid #444;
-    border-left:2px solid #444;
-    border-right:2px solid #fff;
-    border-bottom:2px solid #fff;
-}
-
-/* DOWNLOAD BUTTON */
-
-.download-btn{
-    display:inline-block;
-
-    margin-top:12px;
-    padding:6px 10px;
-
-    background:#c0c0c0;
-    color:black;
-
-    text-decoration:none;
-    font-weight:bold;
-
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
-    border-right:2px solid #444;
-    border-bottom:2px solid #444;
-}
-
-.download-btn:active{
-    border-top:2px solid #444;
-    border-left:2px solid #444;
-    border-right:2px solid #fff;
-    border-bottom:2px solid #fff;
+.content ul{
+    padding-left:20px;
 }
 
 /* TASKBAR */
@@ -151,67 +108,75 @@ p{
 .taskbar{
     position:absolute;
     bottom:0;
+
     width:100%;
-    height:42px;
+    height:40px;
 
     background:#c0c0c0;
-    border-top:2px solid #fff;
+
+    border-top:2px solid white;
 
     display:flex;
     align-items:center;
 
     padding:4px;
-
-    z-index:999;
 }
 
-.start-btn{
+.menu-button{
+    padding:6px 12px;
+
     background:#c0c0c0;
 
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
+    border-top:2px solid white;
+    border-left:2px solid white;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
 
-    padding:6px 12px;
-
     font-weight:bold;
+
     cursor:pointer;
 }
 
-/* CENTER NAME */
-
-.taskbar-name{
+.name{
     position:absolute;
+
     left:50%;
     transform:translateX(-50%);
 
     font-weight:bold;
-    color:black;
+}
 
-    letter-spacing:1px;
+.clock{
+    margin-left:auto;
+
+    padding:5px 10px;
+
+    background:#bdbdbd;
+
+    border-top:2px solid #444;
+    border-left:2px solid #444;
+    border-right:2px solid white;
+    border-bottom:2px solid white;
 }
 
 /* START MENU */
 
 .start-menu{
     position:absolute;
-    bottom:45px;
+
+    bottom:44px;
     left:4px;
 
-    width:240px;
+    width:260px;
 
     background:#c0c0c0;
 
-    border-top:2px solid #fff;
-    border-left:2px solid #fff;
+    border-top:2px solid white;
+    border-left:2px solid white;
     border-right:2px solid #444;
     border-bottom:2px solid #444;
 
     display:none;
-
-    max-height:500px;
-    overflow:auto;
 
     z-index:9999;
 }
@@ -219,45 +184,14 @@ p{
 .menu-item{
     padding:10px;
 
-    cursor:pointer;
-
     border-bottom:1px solid #888;
 
-    display:flex;
-    align-items:center;
-    gap:10px;
+    cursor:pointer;
 }
 
 .menu-item:hover{
     background:navy;
     color:white;
-}
-
-.menu-icon{
-    width:24px;
-    height:24px;
-
-    background:white;
-
-    border:1px solid black;
-
-    object-fit:cover;
-}
-
-.clock{
-    margin-left:auto;
-
-    background:#bdbdbd;
-
-    padding:5px 10px;
-
-    border-top:2px solid #444;
-    border-left:2px solid #444;
-    border-right:2px solid #fff;
-    border-bottom:2px solid #fff;
-
-    min-width:90px;
-    text-align:center;
 }
 
 </style>
@@ -271,50 +205,230 @@ p{
 
     <div class="start-menu" id="startMenu">
 
-        <div class="menu-item" onclick="openCVWindow()">
-            <div class="menu-icon"></div>
+        <div class="menu-item" onclick="showWindow('cvWindow')">
+            CV.txt
+        </div>
+
+        <div class="menu-item" onclick="showWindow('skillsWindow')">
+            Skills.exe
+        </div>
+
+        <div class="menu-item" onclick="showWindow('bioWindow')">
+            Bio.doc
+        </div>
+
+    </div>
+
+    <!-- CV -->
+
+    <div class="window" id="cvWindow" style="top:60px; left:60px;">
+
+        <div class="titlebar" id="cvBar">
+
             <span>CV.txt</span>
+
+            <div class="close" onclick="closeWindow('cvWindow')">
+                ✕
+            </div>
+
         </div>
 
-        <div class="menu-item" onclick="openSkillsWindow()">
-            <div class="menu-icon"></div>
+        <div class="content">
+
+            <h2>Curriculum Vitae</h2>
+
+            <br>
+
+            <p><strong>Name:</strong> Jett Tarwater</p>
+
+            <p><strong>Email:</strong> you@email.com</p>
+
+            <br>
+
+            <p>
+                Creative technologist, artist, musician,
+                and developer focused on interactive media,
+                sound, and digital aesthetics.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- SKILLS -->
+
+    <div class="window" id="skillsWindow" style="top:100px; left:500px;">
+
+        <div class="titlebar" id="skillsBar">
+
             <span>Skills.exe</span>
+
+            <div class="close" onclick="closeWindow('skillsWindow')">
+                ✕
+            </div>
+
         </div>
 
-        <div class="menu-item" onclick="openBioWindow()">
-            <div class="menu-icon"></div>
+        <div class="content">
+
+            <h2>Skills</h2>
+
+            <br>
+
+            <h3>Visual Programs</h3>
+
+            <br>
+
+            <ul>
+                <li>Photoshop</li>
+                <li>Illustrator</li>
+                <li>Animate</li>
+                <li>After Effects</li>
+                <li>Premiere</li>
+                <li>Substance Painter</li>
+                <li>Blender</li>
+                <li>Maya</li>
+                <li>Unity</li>
+            </ul>
+
+            <br>
+
+            <h3>Audio Programs</h3>
+
+            <br>
+
+            <ul>
+                <li>Logic Pro X</li>
+                <li>Ableton Live Suite</li>
+                <li>Serum 1 and 2 (Plugin)</li>
+            </ul>
+
+            <br>
+
+            <h3>Work Experience</h3>
+
+            <br>
+
+            <ul>
+                <li>Information Technology Internship at Modo Networks</li>
+                <li>Retail at CRAZY CAT CYCLERY</li>
+            </ul>
+
+            <br>
+
+            <h3>Experience</h3>
+
+            <br>
+
+            <ul>
+                <li>Camp Counselor at Hummingbird Music Camp</li>
+                <li>Staffer at Hummingbird Music Camp</li>
+                <li>Album Cover Artist</li>
+                <li>Asset Designer for Video Game</li>
+                <li>3D Models</li>
+                <li>UI Design</li>
+                <li>Animation</li>
+                <li>Music</li>
+            </ul>
+
+            <br>
+
+            <h3>Music</h3>
+
+            <br>
+
+            <ul>
+                <li>Musician in The El Paso Youth Jazz Ensemble</li>
+                <li>Musician in the El Paso Youth Symphony Orchestra</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- BIO -->
+
+    <div class="window" id="bioWindow" style="top:180px; left:220px;">
+
+        <div class="titlebar" id="bioBar">
+
             <span>Bio.doc</span>
-        </div>
 
-        <div class="menu-item" onclick="openArtistWindow()">
-
-            <img src="artiststatement.png" class="menu-icon">
-
-            <span>ArtistStatement.png</span>
+            <div class="close" onclick="closeWindow('bioWindow')">
+                ✕
+            </div>
 
         </div>
 
-        <div class="menu-item" onclick="openImageWindow('image1.jpg','Artwork1.bmp')">
+        <div class="content">
 
-            <img src="image1.jpg" class="menu-icon">
+            <h2>Bio</h2>
 
-            <span>Artwork 1</span>
+            <br>
 
-        </div>
+            <p>
+                When I was no more than 2-3 months old, my two-year-old sister,
+                Merry Elliot, M.E., drowned in my grandmother's home pool.
+                My parents were simply in another room for no longer than ten minutes.
+                Her and I were in the playroom. Our older sister was not home.
+                M.E. opened the back door and jumped into the pool without floaties
+                for the first time.
+            </p>
 
-        <div class="menu-item" onclick="openImageWindow('image2.jpg','Artwork2.bmp')">
+            <br>
 
-            <img src="image2.jpg" class="menu-icon">
+            <p>
+                I was a particularly happy baby. I'm told that I almost never cried.
+                I’m told without the brightness that I created with my thoughtless,
+                infant smiles and laughter; the rest of my family would have drowned
+                in the heavy, dark, shadow of grief that seeped and festered into my
+                family's life, home, and hearts.
+            </p>
 
-            <span>Artwork 2</span>
+            <br>
 
-        </div>
+            <p>
+                Ever since I was 4, the age my second, older sister was when M.E.
+                died, I’ve lived with these stories of intense emotion and powerful
+                truths that I was a part of but can only imagine.
+            </p>
 
-        <div class="menu-item" onclick="openImageWindow('image3.jpg','Artwork3.bmp')">
+            <br>
 
-            <img src="image3.jpg" class="menu-icon">
+            <p>
+                Yet I grieve and cry. I’m crying right now, over a girl who held
+                and loved me, but that I cannot remember.
+            </p>
 
-            <span>Artwork 3</span>
+            <br>
+
+            <p>
+                If my parents never told me her stories, I wouldn't feel such emotion.
+                But if I can never know her love, then the sadness of her loss
+                will have to do.
+            </p>
+
+            <br>
+
+            <p>
+                And if stories are so powerful that they can hold, preserve,
+                and pass on something as special as the love I feel from her now,
+                there must be no limit to what they can do.
+            </p>
+
+            <br>
+
+            <p>
+                I try to give people a chance to love, or mourn, or admire,
+                or hate, or just to feel something from the worlds I create.
+            </p>
+
+            <br>
+
+            <p>
+                And there is no good or bad feeling.
+                Because feeling something is always better than feeling nothing.
+            </p>
 
         </div>
 
@@ -324,11 +438,11 @@ p{
 
     <div class="taskbar">
 
-        <button class="start-btn" id="startButton">
+        <button class="menu-button" id="menuButton">
             Menu
         </button>
 
-        <div class="taskbar-name">
+        <div class="name">
             Jett Tarwater
         </div>
 
@@ -342,226 +456,7 @@ p{
 
 <script>
 
-const desktop = document.getElementById("desktop");
-const startButton = document.getElementById("startButton");
-const startMenu = document.getElementById("startMenu");
-
-/* START MENU */
-
-startButton.addEventListener("click", () => {
-
-    if(startMenu.style.display === "block"){
-
-        startMenu.style.display = "none";
-
-    }else{
-
-        startMenu.style.display = "block";
-
-    }
-
-});
-
-/* WINDOW CREATOR */
-
-function createWindow(title, content, top = 100, left = 100){
-
-    const windowDiv = document.createElement("div");
-
-    windowDiv.className = "window";
-
-    windowDiv.style.top = top + "px";
-    windowDiv.style.left = left + "px";
-
-    windowDiv.innerHTML = `
-
-        <div class="title-bar">
-
-            <span>${title}</span>
-
-            <div class="close-btn">✕</div>
-
-        </div>
-
-        <div class="window-content">
-
-            ${content}
-
-        </div>
-
-    `;
-
-    desktop.appendChild(windowDiv);
-
-    makeDraggable(windowDiv);
-
-    const closeBtn = windowDiv.querySelector(".close-btn");
-
-    closeBtn.addEventListener("click", () => {
-
-        windowDiv.remove();
-
-    });
-
-    startMenu.style.display = "none";
-
-}
-
-/* CV */
-
-function openCVWindow(){
-
-    createWindow("CV.txt", `
-
-        <h2>Curriculum Vitae</h2>
-
-        <p><strong>Name:</strong> Jett Tarwater</p>
-
-        <p><strong>Email:</strong> you@email.com</p>
-
-        <p><strong>Experience:</strong></p>
-
-        <ul>
-            <li>Frontend Developer</li>
-            <li>UI / UX Designer</li>
-            <li>Creative Technologist</li>
-        </ul>
-
-    `, 60, 60);
-
-}
-
-/* SKILLS */
-
-function openSkillsWindow(){
-
-    createWindow("Skills.exe", `
-
-        <h2>Skills</h2>
-
-        <ul>
-            <li>HTML / CSS</li>
-            <li>JavaScript</li>
-            <li>Godot Engine</li>
-            <li>Music Production</li>
-            <li>3D Modeling</li>
-            <li>Digital Fabrication</li>
-        </ul>
-
-    `, 120, 420);
-
-}
-
-/* BIO */
-
-function openBioWindow(){
-
-    createWindow("Bio.doc", `
-
-        <h2>Bio</h2>
-
-        <p>
-            Creative developer focused on interactive media,
-            digital aesthetics, and experimental web experiences.
-        </p>
-
-        <p>
-            Interested in sound design, procedural systems,
-            and nostalgic operating-system-inspired interfaces.
-        </p>
-
-    `, 300, 220);
-
-}
-
-/* ARTIST STATEMENT IMAGE */
-
-function openArtistWindow(){
-
-    createWindow("ArtistStatement.png", `
-
-        <img 
-            src="artiststatement.png"
-            class="image-frame"
-        >
-
-        <a 
-            href="artiststatement.png"
-            download
-            class="download-btn"
-        >
-            Download Artist Statement
-        </a>
-
-    `, 400, 650);
-
-}
-
-/* IMAGE WINDOW */
-
-function openImageWindow(imageSrc, title){
-
-    createWindow(title, `
-
-        <img 
-            src="${imageSrc}"
-            class="image-frame"
-        >
-
-        <a 
-            href="${imageSrc}"
-            download
-            class="download-btn"
-        >
-            Download Image
-        </a>
-
-    `, 150, 500);
-
-}
-
-/* DRAGGING */
-
-function makeDraggable(win){
-
-    const titleBar = win.querySelector(".title-bar");
-
-    let offsetX = 0;
-    let offsetY = 0;
-
-    let isDragging = false;
-
-    titleBar.addEventListener("mousedown", (e) => {
-
-        if(e.target.classList.contains("close-btn")) return;
-
-        isDragging = true;
-
-        offsetX = e.clientX - win.offsetLeft;
-        offsetY = e.clientY - win.offsetTop;
-
-        win.style.zIndex = Date.now();
-
-    });
-
-    document.addEventListener("mousemove", (e) => {
-
-        if(!isDragging) return;
-
-        win.style.left = `${e.clientX - offsetX}px`;
-        win.style.top = `${e.clientY - offsetY}px`;
-
-    });
-
-    document.addEventListener("mouseup", () => {
-
-        isDragging = false;
-
-    });
-
-}
-
-/* LIVE CLOCK */
+/* CLOCK */
 
 function updateClock(){
 
@@ -584,7 +479,7 @@ function updateClock(){
         minutes = "0" + minutes;
     }
 
-    clock.textContent = `${hours}:${minutes} ${ampm}`;
+    clock.innerHTML = hours + ":" + minutes + " " + ampm;
 
 }
 
@@ -592,14 +487,109 @@ updateClock();
 
 setInterval(updateClock, 1000);
 
-/* OPEN DEFAULT WINDOWS */
+/* START MENU */
 
-openCVWindow();
-openSkillsWindow();
-openBioWindow();
-openArtistWindow();
+const menuButton = document.getElementById("menuButton");
+const startMenu = document.getElementById("startMenu");
+
+menuButton.onclick = function(){
+
+    if(startMenu.style.display === "block"){
+
+        startMenu.style.display = "none";
+
+    }else{
+
+        startMenu.style.display = "block";
+
+    }
+
+}
+
+/* CLOSE WINDOW */
+
+function closeWindow(id){
+
+    document.getElementById(id).style.display = "none";
+
+}
+
+/* SHOW WINDOW */
+
+function showWindow(id){
+
+    document.getElementById(id).style.display = "block";
+
+    startMenu.style.display = "none";
+
+}
+
+/* DRAGGING */
+
+dragElement(
+    document.getElementById("cvWindow"),
+    document.getElementById("cvBar")
+);
+
+dragElement(
+    document.getElementById("skillsWindow"),
+    document.getElementById("skillsBar")
+);
+
+dragElement(
+    document.getElementById("bioWindow"),
+    document.getElementById("bioBar")
+);
+
+function dragElement(element, handle){
+
+    let pos1 = 0;
+    let pos2 = 0;
+    let pos3 = 0;
+    let pos4 = 0;
+
+    handle.onmousedown = dragMouseDown;
+
+    function dragMouseDown(e){
+
+        e = e || window.event;
+
+        e.preventDefault();
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e){
+
+        e = e || window.event;
+
+        e.preventDefault();
+
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        element.style.top = (element.offsetTop - pos2) + "px";
+        element.style.left = (element.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement(){
+
+        document.onmouseup = null;
+        document.onmousemove = null;
+
+    }
+
+}
 
 </script>
 
 </body>
 </html>
+```
