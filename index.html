@@ -38,7 +38,7 @@ body{
 
 .window{
     position:absolute;
-    width:400px;
+    width:320px;
 
     background:#c0c0c0;
 
@@ -113,6 +113,33 @@ p{
     width:100%;
     display:block;
 
+    border-top:2px solid #444;
+    border-left:2px solid #444;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn{
+    display:inline-block;
+
+    margin-top:12px;
+    padding:6px 10px;
+
+    background:#c0c0c0;
+    color:black;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    border-top:2px solid #fff;
+    border-left:2px solid #fff;
+    border-right:2px solid #444;
+    border-bottom:2px solid #444;
+}
+
+.download-btn:active{
     border-top:2px solid #444;
     border-left:2px solid #444;
     border-right:2px solid #fff;
@@ -451,19 +478,22 @@ function openBioWindow(){
 
 function openArtistWindow(){
 
-    createWindow("Artist Statement", `
+    createWindow("ArtistStatement.png", `
 
         <img 
-            src="a cup.jpg"
+            src="artiststatement.png"
             class="image-frame"
         >
 
+        <a 
+            href="artiststatement.png"
+            download
+            class="download-btn"
+        >
+            Download Artist Statement
+        </a>
+
     `, 400, 650);
-
-    const windows = document.querySelectorAll(".window");
-    const newestWindow = windows[windows.length - 1];
-
-    newestWindow.style.width = "600px";
 
 }
 
@@ -477,6 +507,14 @@ function openImageWindow(imageSrc, title){
             src="${imageSrc}"
             class="image-frame"
         >
+
+        <a 
+            href="${imageSrc}"
+            download
+            class="download-btn"
+        >
+            Download Image
+        </a>
 
     `, 150, 500);
 
