@@ -399,37 +399,8 @@ body{
             `);
 
         });
-
-        </script>
-
-    </div>
-
-    <!-- TASKBAR -->
-
-    <div class="taskbar">
-
-        <button class="start-btn" id="startButton">
-            Menu
-        </button>
-
-        <div class="taskbar-name">
-            Jett Tarwater
-        </div>
-
-        <div class="clock" id="clock">
-            12:00 PM
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-
-const desktop = document.getElementById("desktop");
-const startButton = document.getElementById("startButton");
-const startMenu = document.getElementById("startMenu");
-const audioTracks = [
+            
+        const audioTracks = [
     {
         file:"JUNK.mp3",
         title:"JUNK.mp3",
@@ -462,6 +433,70 @@ audioTracks.forEach((track) => {
     `);
 
 });
+            const youtubeVideos = [
+    {
+        videoId:"https://www.youtube.com/watch?v=Uw04H56P4gU&t=13s",
+        title:"Just Cry",
+        description:"Audio and Graphic Design|3D Modeling"
+    },
+    {
+        videoId:"https://youtu.be/mpQexEGeePM",
+        title:"Window Into a Mind",
+        description:"VR|3D Modeling|Audio and Graphic Design"
+    }
+];
+
+youtubeVideos.forEach((video) => {
+
+    document.write(`
+
+        <div class="menu-item"
+            onclick="openVideoWindow(
+                '${video.videoId}',
+                '${video.title}',
+                '${video.description}'
+            )">
+
+            <div class="menu-icon"></div>
+
+            <span>${video.title}</span>
+
+        </div>
+
+    `);
+
+});
+
+        </script>
+
+    </div>
+
+    <!-- TASKBAR -->
+
+    <div class="taskbar">
+
+        <button class="start-btn" id="startButton">
+            Menu
+        </button>
+
+        <div class="taskbar-name">
+            Jett Tarwater
+        </div>
+
+        <div class="clock" id="clock">
+            12:00 PM
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const desktop = document.getElementById("desktop");
+const startButton = document.getElementById("startButton");
+const startMenu = document.getElementById("startMenu");
+
 
 /* MENU */
 
